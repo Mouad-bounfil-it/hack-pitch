@@ -1,15 +1,14 @@
-// lib/axiosInstance.js
+// axiosInstance
 import axios from 'axios';
 
 const request = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_BASE_ENDPOINT || "http://localhost:4000",
+  baseURL: "/api/gateway",
 });
 
 request.defaults.params = {};
 
 request.interceptors.request.use(
-  (config) => {
-    // Add custom headers or other configuration before request is sent
+  async(config) => {
     return config;
   },
   (error) => {
