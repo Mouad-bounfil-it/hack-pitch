@@ -26,6 +26,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/api/auth/[...nextauth].js", "pages/api/auth/[...nextauth].js", "next-auth.d.ts", "modules/community-project/templates/community/section/feed/components/room-list"],
   "exclude": ["node_modules"]
 }

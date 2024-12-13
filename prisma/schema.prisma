@@ -1,67 +1,45 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
 datasource db {
   provider = "mongodb"
   url      = env("DATABASE_URL")
 }
 
-generator client {
-  provider      = "prisma-client-js"
-  binaryTargets = ["native", "debian-openssl-3.0.x"]
-}
-
-model User {
-  id            String    @id @default(auto()) @map("_id") @db.ObjectId
-  name          String?
-  email         String?   @unique
-  emailVerified DateTime?
-  image         String?
-  accounts      Account[]
-  sessions      Session[]
-  posts         Post[]
-}
-
 model Account {
-  id                 String  @id @default(auto()) @map("_id") @db.ObjectId
-  userId             String  @db.ObjectId
-  type               String
+  id                 String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId             String   @db.ObjectId
   provider           String
   providerAccountId  String
-  refresh_token      String?
-  access_token       String?
+  accessToken        String?
+  refreshToken       String?
   expires_at         Int?
   token_type         String?
   scope              String?
   id_token           String?
   session_state      String?
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user               User     @relation(fields: [userId], references: [id])
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
 
   @@unique([provider, providerAccountId])
 }
 
-model Session {
-  id           String   @id @default(auto()) @map("_id") @db.ObjectId
-  sessionToken String   @unique
-  userId       String   @db.ObjectId
-  expires      DateTime
-  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-}
 
-model VerificationToken {
-  identifier String @id @map("_id")
-  token      String
-  expires    DateTime
 
-  @@unique([identifier, token])
-}
 
-model Post {
-  id          String    @id @default(auto()) @map("_id") @db.ObjectId
-  image       String?
-  title       String
-  slug        String    @unique
-  description String
-  categoryId  String    @db.ObjectId
-  createdAt   DateTime  @default(now())
-  userId      String    @db.ObjectId
-  user        User      @relation(fields: [userId], references: [id])
+model User {
+  id                 String   @id @default(auto()) @map("_id") @db.ObjectId
+  email              String   @unique
+  name               String
+  emailVerified      Boolean? @default(false)
+  image              String?
+  role               String   @default("USER")
+  isBanned           Boolean  @default(false)
+  defaultDescription String   @default("Hello, I am new here! 🚀")
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+  accounts           Account[]
+  @@map("users")
 }

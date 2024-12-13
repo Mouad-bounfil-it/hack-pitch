@@ -1,12 +1,22 @@
-import { type DefaultSession } from "next-auth";
+import NextAuth from "next-auth"
 
 declare module "next-auth" {
-  /**
-   * Returned by `useSession`, `getSession` and received as a prop on the `SessionProvider` React Context
-   */
+  interface User {
+    isBanned: boolean
+  }
   interface Session {
-    user?: {
-      id: string;
-    } & DefaultSession["user"];
+    user: {
+      id: string
+      email: string
+      isBanned: boolean
+    } & DefaultSession["user"]
+  }
+}
+
+declare module "next-auth/jwt" {
+  interface JWT {
+    id: string
+    email: string
+    isBanned: boolean
   }
 }

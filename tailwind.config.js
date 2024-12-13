@@ -1,11 +1,4 @@
 const colors = require("tailwindcss/colors");
-const primary = {};
-// const secondary = {};
-
-[50, 100, 200, 300, 400, 500, 600, 700, 800, 900].forEach((n) => {
-  primary[n] = `var(--color-primary-${n})`;
-  // secondary[n] = `var(--color-secondary-${n})`;
-});
 
 module.exports = {
   content: [
@@ -18,16 +11,41 @@ module.exports = {
     "./node_modules/@startupsquare/ds/**/*.{js,ts,jsx,tsx}",
     "./node_modules/@tremor/**/*.{js,ts,jsx,tsx}", // Tremor module
   ],
-  // darkMode: false, // or 'media' or 'class'
   theme: {
+    container: {
+      center: true,
+      padding: "2rem",
+    },
     extend: {
+      screens: {
+        'xxs': '320px', // Extra extra small
+        'xs': '480px',  // Extra small
+        'sm': '640px',   // Small
+        'md': '768px',  // Medium
+        'lg': '1024px', // Large
+        'xl': '1280px', // Extra large
+        '2xl': '1536px' // 2x Extra large (default)
+      },
       fontSize: {
         "2xs": ["10px", "10px"],
       },
       colors: {
-        primary,
-        gray: colors.slate,
-        "blue-gray": colors.slate,
+        primary: "#f9f4fe",
+        secondary: "#924dbf",
+        third: "#7338a0",
+        fourth: "#0f0529",
+        fifth: "#E6DCEE",
+      },
+      fontFamily: {
+        rubik: ['Rubik', 'sans-serif'],
+      },
+      
+      fontWeight: {
+        light: 300,
+        normal: 400,
+        medium: 500,
+        semibold: 600,
+        bold: 700,
       },
       keyframes: {
         fade: {
