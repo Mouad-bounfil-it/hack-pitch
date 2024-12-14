@@ -204,9 +204,9 @@ const Hero = ({ handleScroll }) => {
                 <span className="text-blue-600"> Traditionnel d'Essaouira</span>
               </h1>
               <p className="mt-6 text-lg leading-relaxed text-gray-600">
-                Explorez notre collection unique d'artisanat authentique, où
-                chaque pièce raconte une histoire de tradition et de
-                savoir-faire ancestral.
+                Découvrez l'authenticité d'Essaouira avec nos produits
+                populaires, faits main pour vous apporter un peu de la magie de
+                la médina chez vous.
               </p>
             </motion.div>
 
@@ -235,7 +235,7 @@ const Hero = ({ handleScroll }) => {
           >
             <div className="relative h-[500px] w-full rounded-2xl overflow-hidden">
               <img
-                src="https://screendy-cdn.fra1.cdn.digitaloceanspaces.com/platfrom-v2/_files/file_1734119658533_WhatsAppImage2024-12-13at204944.jpeg"
+                src="https://screendy-cdn.fra1.cdn.digitaloceanspaces.com/platfrom-v2/_files/file_1734169292462_WhatsAppImage2024-12-14at100304.jpeg"
                 alt="Artisanat Marocain"
                 className="object-cover w-full h-full"
               />
