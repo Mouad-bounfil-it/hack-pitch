@@ -17,6 +17,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { Drawer, DrawerContent } from "@/components/drawer";
 import { MdPhoneInTalk } from "react-icons/md";
+import { FaInstagram } from "react-icons/fa6";
 
 const products = [
   {
@@ -33,6 +34,8 @@ const products = [
     richEditorContent:
       "<p>Soulagement des brûlures légères et traitements des irritations cutanées   Une base de creme hydratante naturel comme du beurre de karite , coco ,Argan, vitamine E</p>",
     phone: "0642132436",
+    instagram:
+      "https://www.instagram.com/cooperative_aicha_sirine?utm_source=qr&igsh=eGNzbWtmbGZtMQ==",
   },
   {
     id: 2,
@@ -49,6 +52,8 @@ Si vous cherchez une recommandation ou une recette maison, voici quelques idées
 
 Crème maison à l'huile d'argan pour les mains</p> `,
     phone: "0642132436",
+    instagram:
+      "https://www.instagram.com/cooperative_aicha_sirine?utm_source=qr&igsh=eGNzbWtmbGZtMQ==",
   },
   {
     id: 3,
@@ -65,6 +70,8 @@ Crème maison à l'huile d'argan pour les mains</p> `,
     <p>En plus de ses bienfaits pour la peau, l'huile d'argan est également un excellent soin capillaire. Elle aide à nourrir et à revitaliser les cheveux secs et abîmés, leur apportant brillance et douceur. Appliquez quelques gouttes sur les pointes de vos cheveux pour un effet nourrissant et protecteur.</p>
     <p>Que ce soit pour un soin de la peau ou des cheveux, l'huile d'argan extra vierge est un incontournable de votre routine de beauté, offrant une expérience luxueuse et naturelle.</p>`,
     phone: "0642132436",
+    instagram:
+      "https://www.instagram.com/cooperative_aicha_sirine?utm_source=qr&igsh=eGNzbWtmbGZtMQ==",
   },
   {
     id: 4,
@@ -81,6 +88,8 @@ Crème maison à l'huile d'argan pour les mains</p> `,
     <p>Nos vêtements sont conçus pour s'adapter à toutes les occasions, que ce soit pour une sortie décontractée, une fête ou un événement spécial. En portant nos pièces, vous portez un morceau de l'héritage culturel marocain, tout en affichant un style unique et authentique.</p>
     <p>Découvrez l'art de s'habiller avec nos créations, qui allient tradition et modernité, et faites l'expérience d'un style intemporel, empreint de culture et de charme.</p>`,
     phone: "0642132436",
+    instagram:
+      "https://www.instagram.com/cooperative_aicha_sirine?utm_source=qr&igsh=eGNzbWtmbGZtMQ==",
   },
   {
     id: 5,
@@ -95,6 +104,8 @@ Crème maison à l'huile d'argan pour les mains</p> `,
     richEditorContent:
       "<p>Plongez dans l'univers du raffia naturel, une matière traditionnelle et durable qui incarne l'authenticité d'Essaouira. Nos créations en raffia sont entièrement fabriquées à la main par des artisans locaux, qui perpétuent un savoir-faire ancestral, tout en y apportant une touche moderne. Chaque pièce, qu'il s'agisse de sacs, chapeaux ou paniers, est minutieusement tissée pour offrir une combinaison parfaite de légèreté et de résistance. Le raffia naturel, avec sa texture unique et sa couleur chaleureuse, apporte à vos accessoires une touche élégante et intemporelle. Que ce soit pour ajouter du charme à votre quotidien ou pour offrir un cadeau original, nos produits en raffia sont une véritable invitation à découvrir l'artisanat marocain sous son meilleur jour.</p>",
     phone: "0642132436",
+    instagram:
+      "https://www.instagram.com/cooperative_aicha_sirine?utm_source=qr&igsh=eGNzbWtmbGZtMQ==",
   },
   {
     id: 6,
@@ -111,6 +122,8 @@ Crème maison à l'huile d'argan pour les mains</p> `,
     <p>En plus de ses qualités culinaires, l'huile d'argan alimentaire est également reconnue pour ses effets bénéfiques sur la santé. Elle aide à réduire le cholestérol, favorise la digestion et contribue à la santé de la peau et des cheveux lorsqu'elle est consommée régulièrement.</p>
     <p>Découvrez l'authenticité et la richesse de l'huile d'argan alimentaire, un trésor culinaire du Maroc qui allie goût et bien-être. Intégrez-la dans votre cuisine pour une expérience gastronomique unique et saine.</p>`,
     phone: "0642132436",
+    instagram:
+      "https://www.instagram.com/cooperative_aicha_sirine?utm_source=qr&igsh=eGNzbWtmbGZtMQ==",
   },
 ];
 
@@ -290,6 +303,7 @@ const ProductCard = ({ product, onClick }) => {
 };
 
 const ProductDetails = ({ product }) => {
+  const router = useRouter();
   const sendMessageWa = () => {
     const encodedMessage = encodeURIComponent(
       `Bonjour, je suis intéressé(e) par votre produit: ${product.msg}`
@@ -319,7 +333,10 @@ const ProductDetails = ({ product }) => {
             className="text-4xl font-bold text-gray-900"
           />
           <div className="flex items-center gap-4">
-            <Badge color="orange" className="px-6 py-2 text-lg font-medium text-orange-800 bg-orange-100 rounded-full">
+            <Badge
+              color="orange"
+              className="px-6 py-2 text-lg font-medium text-orange-800 bg-orange-100 rounded-full"
+            >
               {product.category}
             </Badge>
             <span className="text-3xl font-bold text-orange-600">
@@ -348,6 +365,18 @@ const ProductDetails = ({ product }) => {
 
           {/* Action Buttons */}
           <div className="grid grid-cols-2 gap-6">
+            <button
+              className="relative z-10 flex items-center justify-center gap-3 text-white bg-pink-500 rounded-xl"
+              onClick={() => {
+                router.push(product.instagram);
+              }}
+            >
+              <div className="absolute inset-0 transition-transform duration-300 origin-left transform scale-x-0 bg-pink-600 group-hover:scale-x-100" />
+              <div className="relative z-10 flex items-center justify-center gap-3 text-white">
+                <FaInstagram size={24} className="shrink-0" />
+                <span className="text-lg font-medium">Instagram</span>
+              </div>
+            </button>
             <button
               onClick={sendMessageWa}
               className="relative px-8 py-4 overflow-hidden bg-green-500 group rounded-xl"
