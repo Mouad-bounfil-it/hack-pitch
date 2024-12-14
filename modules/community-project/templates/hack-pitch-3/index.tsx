@@ -48,7 +48,7 @@ const products = [
 Si vous cherchez une recommandation ou une recette maison, voici quelques idées : <br />
 
 Crème maison à l'huile d'argan pour les mains</p> `,
-    phone: "0629079044",
+    phone: "0642132436",
   },
   {
     id: 3,
