@@ -78,7 +78,7 @@ Ces sandales polyvalentes s’adaptent à toutes vos occasions, du quotidien dé
     category: "Artisanaux",
     price: "250 DH",
     image:
-      "https://screendy-cdn.fra1.cdn.digitaloceanspaces.com/platfrom-v2/_files/file_1734166536331_WhatsAppImage2024-12-14at0917082.jpeg",
+      "https://screendy-cdn.fra1.cdn.digitaloceanspaces.com/platfrom-v2/_files/file_1734177116976_data55.jpeg",
     shortDescription:
       "<h4>Explorez l’univers du raffia, une matière noble et durable, au cœur de l’artisanat d’Essaouira.</h4>  ",
     richEditorContent:
@@ -86,7 +86,7 @@ Ces sandales polyvalentes s’adaptent à toutes vos occasions, du quotidien dé
     phone: "0629079044",
   },
   {
-    id: 5,
+    id: 6,
     title: "<h2>Tapis Traditionnels</h2>",
     category: "Artisanaux",
     price: "900 DH",
@@ -96,6 +96,19 @@ Ces sandales polyvalentes s’adaptent à toutes vos occasions, du quotidien dé
       "<h4>Découvrez l'authenticité et la beauté des tapis faits main d'Essaouira, où chaque création reflète un savoir-faire ancestral</h4>  ",
     richEditorContent:
       "<p>Plongez dans l’univers des tapis traditionnels d’Essaouira, où chaque pièce est le fruit d’un savoir-faire ancestral. Tissés à la main par des artisans locaux, ces tapis racontent l’histoire et les traditions de la région, avec des motifs uniques et des couleurs qui capturent l’essence de la culture marocaine. Fabriqués à partir de matériaux naturels de haute qualité, nos tapis offrent une texture douce et chaleureuse, parfaite pour sublimer votre intérieur. Que vous choisissiez un modèle géométrique, un design floral ou un motif plus subtil, chaque tapis reflète la passion et l'attention aux détails de son créateur. Ces pièces intemporelles allient esthétique, confort et durabilité, et apportent une touche de tradition marocaine à votre maison.</p>",
+    phone: "0629079044",
+  },
+  {
+    id: 7,
+    title: "<h2>Couture Artisanale</h2>",
+    category: "Vêtements",
+    price: "150 DH",
+    image:
+      "https://screendy-cdn.fra1.cdn.digitaloceanspaces.com/platfrom-v2/_files/file_1734177178385_data66.jpeg",
+    shortDescription:
+      "<h4>Explorez nos créations de couture artisanale d'Essaouira, où chaque vêtement allie savoir-faire traditionnel et élégance contemporaine pour vous offrir des pièces uniques et raffinées.</h4>  ",
+    richEditorContent:
+      "<p>Plongez dans l'univers de la couture artisanale d'Essaouira, où chaque pièce est une œuvre d'art soigneusement confectionnée à la main. Nos créations allient le raffinement des tissus naturels à des techniques de couture traditionnelles, transmises de génération en génération. Que vous recherchiez une robe élégante, une tunique légère ou des accessoires raffinés, chaque vêtement reflète l'authenticité et le savoir-faire des artisans locaux. Les détails minutieux et les finitions soignées ajoutent une touche unique à chaque pièce, créant des tenues qui capturent l'essence même de la culture marocaine tout en s'adaptant aux tendances modernes. Découvrez l’élégance intemporelle d’Essaouira, portée par la créativité et la passion des artisans.</p>",
     phone: "0629079044",
   },
 ];
