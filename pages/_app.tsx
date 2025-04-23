@@ -1,7 +1,4 @@
 import { useEffect } from "react";
-// import { Provider as ReduxProvider } from "react-redux";
-// import { useStore } from "../store";
-import { Components } from "@/modules/_shared";
 import { ToastContainer, cssTransition } from "react-toastify";
 import {
   createEmotionCache,
@@ -31,7 +28,6 @@ import "react-grid-layout/css/styles.css";
 import "react-resizable/css/styles.css";
 
 import { useRouter } from "next/router";
-import API from "../router";
 
 const PRIMARY_COLOR = "blue";
 
@@ -221,7 +217,6 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
       <Wrapper>
         <LayoutTree Component={Component} pageProps={pageProps} />
       </Wrapper>
-      <Components.NProgress />
       {/* </ReduxProvider> */}
     </SessionProvider>
   );

@@ -17,6 +17,9 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { Drawer, DrawerContent } from "@/components/drawer";
 import { MdPhoneInTalk } from "react-icons/md";
+import API from "@/router/index";
+
+
 
 const products = [
   {
@@ -103,6 +106,7 @@ export default function ArtisanaMaroc() {
   const router = useRouter();
   const [isProductSelected, setIsProductSelected] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const { data: products, isLoading, error } = API.public.useFirstCommunityProject("https://script.google.com/macros/s/AKfycbw4awv_xN0X1_6NqX0PE502OZ58_f7czvl4bNxrHC6H_wv05FmpNb1oihcqRo_-0omW_g/exec");
 
   useEffect(() => {
     const productId = router.query.productId;
@@ -115,6 +119,14 @@ export default function ArtisanaMaroc() {
     const productsSection = document.querySelector("#products");
     productsSection?.scrollIntoView({ behavior: "smooth" });
   };
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
   return (
     <>
       <Drawer

@@ -1,8 +1,5 @@
-import MainAuthWrapper from "@/layouts/main-auth-wrapper/main-auth-wrapper";
-import { withLayout } from "@moxy/next-layout";
 
-import API from "../router";
-import { Center, Skeleton } from "@mantine/core";
+import { withLayout } from "@moxy/next-layout";
 
 function CustomNotFoundPage() {
   return (
@@ -12,6 +9,6 @@ function CustomNotFoundPage() {
   );
 }
 
-export default withLayout(<MainAuthWrapper></MainAuthWrapper>)(
+export default withLayout()(
   CustomNotFoundPage
 );

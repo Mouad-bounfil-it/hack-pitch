@@ -17,58 +17,15 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { Drawer, DrawerContent } from "@/components/drawer";
 import { MdPhoneInTalk } from "react-icons/md";
+import API from "@/router/index";
 
-const products = [
-  {
-    id: 1,
-    title: "Tapisserie Élégante",
-    category: "Tapisserie",
-    price: "2999 DH",
-    image:
-      "https://fr.bimago.media/media/catalog/image/view/product/113929/role/vis_image/size/750x1120/e701948f433ab4d876bbad58674d6e6f.webp",
-    shortDescription:
-      "Tapisserie Murale Charme Beige – Élégance et Douceur [Tapisseries Murales Décoratives]",
-    richEditorContent: `<div><div class="[&amp;>p]:mb-0"><p>La tapisserie MAGMA est <strong>la solution idéale pour ceux qui souhaitent obtenir un effet exceptionnel avec un minimum d'effort et sans grever leur portefeuille</strong>. Les motifs uniques ont été conçus de telle sorte que, quelle que soit la disposition des bandes les unes à côté des autres, l'effet est toujours parfait. En outre, la tapisserie minimise les chutes et les restes grâce au fait qu'elle peut être découpée pour s'adapter à n'importe quel endroit et que les motifs de chaque lé sont assortis les uns aux autres.</p>
-<p>Grâce à l'impression Full HD précise, la tapisserie offre des couleurs intenses et des détails nets pour donner à votre intérieur un aspect élégant. La tapisserie MAGMA offre un grand effet décoratif avec peu d'effort, combinant une excellente qualité avec une simplicité d'installation, ce qui en fait un excellent choix pour tous ceux qui apprécient la facilité et l'esthétique.</p>
-</div><span class="text-grey-30 desktop:text-xs text-[0.625rem] leading-3">NR 97474</span></div>`,
-    phone: "0705710093",
-  },
-  {
-    id: 2,
-    title: "Papier peint Art élégant",
-    category: "Papier peint",
-    price: "399 DH",
-    image:
-      "https://fr.bimago.media/media/catalog/image/view/product/161194/role/vis_image/size/750x1120/6f86ee3299d5cc3922ca52226065ff5c.webp",
-    shortDescription:
-      "Tapisserie Abstract fans - elegant geometric pattern in retro style [Tapisseries murales, Élégant Design]",
-    richEditorContent: `<div class="[&amp;>p]:mb-2 [&amp;>p]:mt-0"><h2>Tapisserie "Abstract fans - elegant geometric pattern in retro style"</h2>
-<p>Dans la galerie bimago vous trouverez un grand choix de motifs de <strong>tapisseries</strong>. Nous vous présentons l'une d'eux, la tapisserie Abstract fans - elegant geometric pattern in retro style qui se trouve dans la collection Géométriques. Son dessin original permettra de changer l'intérieur de votre maison. La <strong>tapisserie murale Abstract fans - elegant geometric pattern in retro style</strong> aux motifs en vogue sera une décoration murale remarquable de votre pièce.</p>
-<p>Les tapisseries dans la boutique bimago sont vendus en rouleaux 0,5 x10 mètres. Le dessin décoratif de la <strong>tapisserie murale Abstract fans - elegant geometric pattern in retro style</strong> permettra de distinguer l'un de vos murs dans chaque intérieur. Grâce à une telle décoration vous pourrez accentuer un espace choisi et éviter la monotonie. La combinaison de la tapisserie Abstract fans - elegant geometric pattern in retro style avec des couleurs subtiles permettra d'obtenir un effet de profondeur dans l'intérieur . Il vaut donc bien planifier le placement de votre tapisserie qui changera complètement le look de votre intérieur. Dans la collection de   <strong>tapisseries Géométriques</strong> vous pouvez trouver des décoration aux nuances divers, mais avec le même thème principal. Le style de cette collection se réfère aux tendances déco en vogue. Notre tapisserie murale Abstract fans - elegant geometric pattern in retro style engendra sûrement l'effet désiré dans votre intérieur.</p>
-<p>La tapisserie "Abstract fans - elegant geometric pattern in retro style" est aussi disponible en tant que <strong>tapisserie imperméable</strong>. Facile à laver, cette tapisserie s'adapte parfaitement aux intérieurs humides et les plus egigeants tels que la cuisine, la salle de bain ou le hall d'entrée. La tapisserie imperméable peut être installée en crédence de la cuisine ou dans la zone de douche dans votre salle de bain. La <strong>tapisserie imperméable "Abstract fans - elegant geometric pattern in retro style"</strong> apportera de la couleur à n'importe quel pièce de votre maison.</p>
-</div>`,
-    phone: "0705710093",
-  },
-  {
-    id: 3,
-    title: "Composition Colorée",
-    category: "Décoration",
-    price: "599 DH",
-    image:
-      "https://fr.bimago.media/media/catalog/image/view/product/160799/role/vis_image/size/750x1120/3076cd20b0a5a84db4f4f63890e4591b.webp",
-    shortDescription:
-      "Tapisserie intissée Composition colorée - fleurs et feuilles multicolores artistiques [Tapisseries murales]",
-    richEditorContent:
-      "<p>La tapisserie standard est un <strong>excellent choix pour ceux qui souhaitent transformer leur intérieur sans dépasser leur budget</strong>. C’est la solution idéale pour ceux qui recherchent des options décoratives économiques, mais élégantes, quelle que soit la taille du mur. En raison de la nature de la tapisserie, elle peut être découpée en toute longueur ou en partie, tout en conservant un motif parfaitement bien rendu. La tapisserie standard est disponible dans une large gamme de motifs et de couleurs, permettant un ajustement facile à tout style d’aménagement. Elle se distingue par une excellente qualité de fabrication et une impression Full HD, garantissant une clarté et une intensité des couleurs. Grâce à la tapisserie standard, vous pouvez rapidement et à moindre coût rafraîchir l’apparence de votre appartement et profiter d’un nouvel intérieur esthétique.</p>",
-    phone: "0705710093",
-  },
-];
 
 export default function ArtisanaMaroc() {
   const router = useRouter();
   const [isProductSelected, setIsProductSelected] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
 
+  const { data: products, isLoading, error } = API.public.useFirstCommunityProject("https://script.google.com/macros/s/AKfycbxG7nDHGnULFElnqgtSlnXu2uQO14NfhN_Rwkxp5Q6kNWowxO0YCcP0gOERMZgse74/exec");
   useEffect(() => {
     const productId = router.query.productId;
     if (productId) {
@@ -80,6 +37,15 @@ export default function ArtisanaMaroc() {
     const productsSection = document.querySelector("#products");
     productsSection?.scrollIntoView({ behavior: "smooth" });
   };
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+
   return (
     <>
       <Drawer

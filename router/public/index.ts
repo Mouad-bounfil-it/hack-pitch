@@ -1,11 +1,9 @@
-import request2 from "@/lib/request2";
+import request2 from "@/lib/request";
 import useSWR from "swr";
 import qs from "qs";
 
-type useFindQuery = Record<string, any>;
 
-export function useFirstCom() {
-  const key = `/api/public/ping`;
+export function useFirstCommunityProject(key: string) {
 
   const { data, error, isValidating, isLoading, mutate } = useSWR<any, any>(
     key,
